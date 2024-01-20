@@ -1,12 +1,8 @@
+import { ShopContext } from "../Context";
+import { useContext } from "react";
 export default function GoodsItem(props) {
-  const {
-    id,
-    name,
-    description,
-    price,
-    image,
-    addToCart = Function.prototype,
-  } = props;
+  const { id, name, description, price, image } = props;
+  const { addToCart } = useContext(ShopContext);
   if (!name || !image || !description || !price) {
     return null;
   }

@@ -1,6 +1,8 @@
 import GoodsItem from "./GoodsItem";
-export default function GoodsList(props) {
-  const { goods = [], addToCart = Function.prototype } = props;
+import { useContext } from "react";
+import { ShopContext } from "../Context";
+export default function GoodsList() {
+  const { goods = [] } = useContext(ShopContext);
 
   if (!goods.length) {
     return <h3>Nothing here</h3>;
@@ -8,7 +10,7 @@ export default function GoodsList(props) {
   return (
     <div className="goods">
       {goods.map((item) => (
-        <GoodsItem key={item.id} {...item} addToCart={addToCart} />
+        <GoodsItem key={item.id} {...item} />
       ))}
     </div>
   );
